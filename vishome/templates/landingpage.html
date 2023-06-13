@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>{% block title %}Home | My Shopping Site{% endblock %}</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+</style>
+  <link rel="stylesheet" href="static/css/menu.css">
+  <link rel="stylesheet" href="static/css/image.css">
+</head>
+<body>
+<div class="content-type">
+<div class="menuone">
+  <h1 class="heading-class">WELCOME TO MY SHOPPING WEBSITE!!!</h1>
+</div>
+<div class="menuone" style="padding-bottom: 10px;">
+    <button class="menu-buttons"><a class="menuhref" href="/">Home</a></button>
+    <button class="menu-buttons"><a class="menuhref" href="/mycart">My Cart</a></button>
+    <button class="menu-buttons"><a class="menuhref" href="/search">Search</a></button>
+    <button class="menu-buttons"><a class="menuhref" href="/contactus">Contact Us</a></button>
+</div>
+<div>
+  {% block content %}
+    <h2 class="heading-class">OUR PRODUCTS</h2>
+    <div class="proimg">
+      {% for i in pro %}
+          <div class="dispro-div">
+              <div><img src="{{ i.proimg.url }}" style="max-width: 100%;"></div>
+              <div class="product-info">
+              <p class="proname-text"><b>{{ i.proname }}</b></p>
+              <p>{{ i.prospec }}</p>
+              <p class="price-button">₹{{ i.proprice }}</p>
+              <form action="/addtocart">
+                  <input type="hidden" name="proid" value="{{ i.id }}">
+                  <input type="number" min="0" max="10" name="proqty" placeholder="Qty..." style="height: 22px;">
+                  <input type="submit" value="ADD TO CART" class="add-to-cart-button">
+              </form>
+              </div>
+          </div>
+      {% endfor %}
+  </div>
+  {% endblock %}
+</div></div>
+<footer>Designed by VTR</footer>
+</body>
+</html>

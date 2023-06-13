@@ -1,0 +1,27 @@
+{% extends 'landingpage.html' %}
+{% block title %}Our Products{% endblock %}
+{% block content %}
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+</style>
+<link rel="stylesheet" href="static/css/image.css">
+<div class="proimg">
+    {% for i in pro %}
+        <div class="dispro-div">
+            <div><img src="{{ i.proimg.url }}" style="max-width: 100%;"></div>
+            <div class="product-info">
+            <p class="proname-text"><b>{{ i.proname }}</b></p>
+            <p>{{ i.prospec }}</p>
+            <p class="price-button">₹{{ i.proprice }}</p>
+            <form action="/addtocart">
+                <input type="hidden" name="proid" value="{{ i.id }}">
+                <input type="number" min="0" max="10" name="proqty" placeholder="Qty..." style="height: 22px;">
+                <input type="submit" value="ADD TO CART" class="add-to-cart-button">
+            </form>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
+
+

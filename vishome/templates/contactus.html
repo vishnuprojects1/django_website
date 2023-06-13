@@ -1,0 +1,17 @@
+{% extends 'landingpage.html' %}
+{% block title %}Contact Us{% endblock %}
+{% block content %}
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+</style>
+<link rel="stylesheet" href="static/css/image.css">
+<h2 style="text-align: center; padding-top: 1px;">CONTACT US</h2>
+<img src="images/contact-us.jpg" style="max-width: 15%;padding-left: 525px;padding-top: 1px;padding-bottom: 15px;">
+<form action="/detadded" method="post" class="contact-form-cl">
+    {% csrf_token %}
+    <input type="text" name="cname" placeholder="Your Name..." title="Field required" required>
+    <input type="email" name="cemail" placeholder="Your Email..." title="Field required" required style="margin-left: 10px;">
+    <input type="text" name="cphno" placeholder="Phone no..." pattern="[0-9]+" title="Field required" required style="margin-left: 10px;">
+    <input type="submit" value="Submit" style="margin-left: 10px;" class="cont-button">
+</form>
+{% endblock %}

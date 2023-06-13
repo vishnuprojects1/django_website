@@ -1,0 +1,17 @@
+{% extends 'landingpage.html' %}
+{% block title %}Search Product{% endblock %}
+{% block content %}
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+</style>
+<link rel="stylesheet" href="static/css/image.css">
+{% load static %}
+<script src="{% static 'js/searchprod.js' %}"></script>
+<h2 style="text-align: center; padding-top: 10px;">SEARCH A PRODUCT</h2>
+<img src="images/search-pro.jpg" style="max-width: 15%;padding-left: 515px;padding-top: 1px;">
+<div style="display: flex;justify-content: center;padding: 10px;">
+    <input type="text" name="keyword" id="keyword" placeholder="Search a product..." style="height: 22px;width: 40%;">
+    <input type="button" value="Search" onclick="keyprosearch()" class="add-to-cart-button" style="margin-left: 10px;">
+</div>
+<div id="data"></div>
+{% endblock %}

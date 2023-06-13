@@ -1,0 +1,25 @@
+{% extends 'landingpage.html' %}
+{% block title %}My Cart{% endblock %}
+{% block content %}
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+</style>
+<link rel="stylesheet" href="static/css/image.css">
+<h2 style="text-align: center; padding-top: 10px;">MY CART</h2>
+<div class="proimg">
+    {% for i in pro %}
+        <div class="my-cart-cl">
+            <div class="product-info">
+            <p style="font-size: 22px;background-color: #ffff0216;"><b>{{ i.Name }}</b></p>
+            <p class="quantity-button">Quantity: {{ i.Qty }}</p>
+            <form action="/delete-item" method="POST">
+                {% csrf_token %}
+                <input type="hidden" name="item_id" value="{{ i.Id }}">
+                <input type="submit" value="DELETE ITEM" class="delete-cart-button">
+            </form>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+<div class="amt-pay">TOTAL AMOUNT TO BE PAID: ₹{{amount}}</div>
+{% endblock %}
